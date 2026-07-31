@@ -1,23 +1,12 @@
-name: PowerShell Demo
+name: hello
 
 on:
-  workflow_dispatch:
+  - push
+  - workflow_dispatch
 
 jobs:
-  demo:
-    runs-on: windows-latest
+  say-hello:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Get date
-        shell: pwsh
-        run: Get-Date
-
-      - name: Current directory
-        shell: pwsh
-        run: Get-Location
-
-      - name: List files
-        shell: pwsh
-        run: Get-ChildItem
+      - run: echo "Hello from GitHub Actions"

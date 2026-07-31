@@ -1,15 +1,23 @@
-name: hello
+name: PowerShell Demo
 
 on:
-  - push
-  - workflow_dispatch
+  workflow_dispatch:
 
 jobs:
-  say-hello:
-    runs-on: ubuntu-latest
+  demo:
+    runs-on: windows-latest
 
     steps:
-      - run: echo "Hello Sergey!"
-      - run: pwd
-      - run: ls
-      - run: date
+      - uses: actions/checkout@v4
+
+      - name: Get date
+        shell: pwsh
+        run: Get-Date
+
+      - name: Current directory
+        shell: pwsh
+        run: Get-Location
+
+      - name: List files
+        shell: pwsh
+        run: Get-ChildItem
